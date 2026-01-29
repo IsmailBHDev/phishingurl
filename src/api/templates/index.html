@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PhishGuard URL Detector</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; max-width: 900px; }
+    input { width: 650px; padding: 10px; font-size: 14px; }
+    button { padding: 10px 16px; font-size: 14px; cursor: pointer; }
+    .card { margin-top: 18px; padding: 16px; border: 1px solid #ddd; border-radius: 10px; }
+    .phishing { color: #b00020; font-weight: bold; }
+    .legit { color: #0b6b0b; font-weight: bold; }
+    code { background: #f6f6f6; padding: 2px 6px; border-radius: 6px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border-bottom: 1px solid #eee; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>PhishGuard URL Detector</h1>
+  <p>Enter a URL to classify it as <b>phishing</b> or <b>legit</b>.</p>
+
+  <form method="post" action="/check">
+    <input type="text" name="url" placeholder="https://example.com" required />
+    <button type="submit">Check URL</button>
+  </form>
+
+  {% if result %}
+    <div class="card">
+      {% if result.error %}
+        <p class="phishing">{{ result.error }}</p>
+      {% else %}
+        <p><b>URL:</b> <code>{{ result.url }}</code></p>
+        <p><b>Label:</b>
+          <span class="{{ result.label }}">{{ result.label | upper }}</span>
+        </p>
+        <p><b>Probability:</b> {{ "%.4f"|format(result.probability) }}</p>
+        <p><b>Threshold:</b> {{ result.threshold }}</p>
+
+        {% if result.top_signals and result.top_signals|length > 0 %}
+          <h3>Top signals</h3>
+          <table>
+            <thead>
+              <tr><th>Feature</th><th>Contribution</th></tr>
+            </thead>
+            <tbody>
+              {% for s in result.top_signals %}
+                <tr>
+                  <td>{{ s.feature }}</td>
+                  <td>{{ "%.6f"|format(s.contribution) }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <p style="margin-top: 28px; color:#666;">
+    API docs: <a href="/docs">/docs</a>
+  </p>
+</body>
+</html>
