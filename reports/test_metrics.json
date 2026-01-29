@@ -1,0 +1,22 @@
+{
+  "threshold": 0.71,
+  "test_precision": 0.12674897119341563,
+  "test_recall": 0.3684210526315789,
+  "test_f1": 0.1886099203919167,
+  "test_pr_auc": 0.11024950274269145,
+  "test_roc_auc": 0.7745556671481448,
+  "confusion_matrix": {
+    "format": "[[tn, fp], [fn, tp]]",
+    "values": [
+      [
+        11659,
+        1061
+      ],
+      [
+        264,
+        154
+      ]
+    ]
+  },
+  "base_rate_spam": 0.031816105952199726
+}

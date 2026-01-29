@@ -1,0 +1,12 @@
+{
+  "val_precision": 0.14072327044025157,
+  "val_recall": 0.42822966507177035,
+  "val_f1": 0.2118343195266272,
+  "val_pr_auc": 0.13191054551958198,
+  "chosen_threshold": 0.71,
+  "threshold_target_precision": 0.5,
+  "threshold_mode": "best_f1_fallback",
+  "threshold_selected_precision": 0.14072327044025157,
+  "threshold_selected_recall": 0.42822966507177035,
+  "threshold_selected_f1": 0.2118343195266272
+}
