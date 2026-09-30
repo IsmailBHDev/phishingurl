@@ -1,0 +1,15 @@
+# Default owner for all files
+* @IsmailBHDev
+
+# Source code
+/src/ @IsmailBHDev
+
+# Tests
+/tests/ @IsmailBHDev
+
+# Documentation
+README.md @IsmailBHDev
+CONTRIBUTING.md @IsmailBHDev
+
+# GitHub configuration
+.github/ @IsmailBHDev
